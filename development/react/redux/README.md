@@ -51,3 +51,43 @@ function counter(state = 0, action) {
 ```
 
 As you can see, the reducer function is pure. Given the same input, it will always return the same output regardless of any other states of the application.
+
+## Using Redux
+
+To begin using Redux, we have to create a new store using `createStore(reducer)`
+
+```javascript
+import { createStore } from 'redux';
+
+// Takes a reducer from anywhere
+// const reducer = ...;
+const store = createStore(reducer);
+```
+
+There are three functions that can be accessed from the `store` object
+
+### `store.getState()`
+
+This will return the state of the store. If we use `counter` above as our reducer (`const store = createStore(counter);`), we'll get `0` (default value) when we call `store.getStore();`
+
+### `store.dispatch(action)`
+
+We can use this function to *dispatch* an action. For example, if we want to use the `'INCREMENT'` action with the counter, we can call `store.dispatch({ type: 'INCREMENT' });`.
+
+### `store.subscribe(callback)`
+
+If we want to do something after an action has been dispatched, we can use `store.subscribe()` with a callback function as an argument to achieve that.
+
+```javascript
+store.subscribe(render);
+// Calls to init the initial state value
+render();
+
+// Can be named something else
+function render() {
+    console.log('The action is called!');
+}
+
+function onButtonClick() {
+    store.dispatch({ type: 'INCREMENT' });
+}
