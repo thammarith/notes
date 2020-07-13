@@ -91,3 +91,59 @@ function render() {
 function onButtonClick() {
     store.dispatch({ type: 'INCREMENT' });
 }
+```
+
+## Using with React
+
+Let's assum we have a counter application. Here is how to dispatch an action with React.
+
+```jsx
+const Counter = ({ value, onIncrement, onDecrement }) => (
+    <>
+        <h1>{value}</h1>
+        <button onClick={onIncrement}>+</button>
+        <button onClick={onDecrement}>-</button>
+    </>
+);
+```
+
+```jsx
+<Counter
+    value={store.getState()}
+    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
+    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+/>
+```
+
+## Miscellaneous
+
+Basically, store implementation is a really simple function.
+
+```javascript
+function createStore(reducer) {
+    let state;
+    let listeners = [];
+
+    // Init state by getting reducer to initiate the store
+    dispatch({});
+
+    function getState() { return state; }
+
+    function dispatch(action) {
+        state = reducer(state, action);
+        // Calls every registered listeners after the action has been dispatched
+        listeners.forEach(listener => listener());
+    }
+
+    function subscribe(listener) {
+        // Keeps track of listeners since it can be called many times
+        listeners.push(listener);
+        // Provide the way to unsubscribe
+        return function () {
+            listeners = listners.filter(l => l !== listener);
+        }
+    }
+
+    return { getState, dispatch, subscribe }
+}
+```
