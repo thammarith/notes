@@ -79,12 +79,12 @@ We can use this function to *dispatch* an action. For example, if we want to use
 If we want to do something after an action has been dispatched, we can use `store.subscribe()` with a callback function as an argument to achieve that.
 
 ```javascript
-store.subscribe(render);
+store.subscribe(someCallback);
 // Calls to init the initial state value
-render();
+someCallback();
 
 // Can be named something else
-function render() {
+function someCallback() {
     console.log('The action is called!');
 }
 
