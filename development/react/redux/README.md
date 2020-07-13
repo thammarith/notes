@@ -24,16 +24,16 @@ This is what a normal reducer looks like
 
 ```javascript
 function counter(state, action) {
-  // [Convention] If the reducer receives `undefined`, it should return what it considers to be the initial value of the state
-  if (typeof state === 'undefined') return 0;
+    // [Convention] If the reducer receives `undefined`, it should return what it considers to be the initial value of the state
+    if (typeof state === 'undefined') return 0;
 
-  // [Convention] People tend to use `type` as the key for the action type. It could be something else but why would you do that?
-  // Checks the action type
-  if (action.type === 'INCREMENT') return state + 1;
-  if (action.type === 'DECREMENT') return state - 1;
-  
-  // [Convention] If the action is not legal, return the current state
-  return state;
+    // [Convention] People tend to use `type` as the key for the action type. It could be something else but why would you do that?
+    // Checks the action type
+    if (action.type === 'INCREMENT') return state + 1;
+    if (action.type === 'DECREMENT') return state - 1;
+
+    // [Convention] If the action is not legal, return the current state
+    return state;
 }
 ```
 
@@ -42,11 +42,11 @@ This can later be refactored to
 ```javascript
 // [Convention] Sets the default value here
 function counter(state = 0, action) {
-  switch (action.type) {
-    case 'INCREMENT': return state + 1;
-    case 'DECREMENT': return state - 1;
-    default: return state;
-  }
+    switch (action.type) {
+        case 'INCREMENT': return state + 1;
+        case 'DECREMENT': return state - 1;
+        default: return state;
+    }
 }
 ```
 
