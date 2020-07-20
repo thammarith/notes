@@ -1,6 +1,6 @@
 # git
 
-'What the fuck is git?', you may ask. To explain it simply, a git, shorted for nothing, is a stupid content tracker, that's what the creator, the God, himself said.
+'What the fuck is git?', you may ask. To explain it simply, a git, shortened for nothing, is a stupid content tracker, that's what the creator, the God, himself said.
 
 Let's stop being a git for a second. A git is actually a fucking big graph. (It's directed acyclic graph, nerds.)
 
